@@ -1,5 +1,8 @@
 package me.jko.tobyspringboothelloboot;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SimpleHelloService implements HelloService {
 
   @Override
