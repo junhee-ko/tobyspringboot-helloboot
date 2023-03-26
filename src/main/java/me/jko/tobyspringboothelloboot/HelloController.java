@@ -3,8 +3,6 @@ package me.jko.tobyspringboothelloboot;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Objects;
-
 /*
  * RequestMapping 을 붙이지 않아도, DispatcherServlet 이 이 안에 매핑 정보가 담겨있을 것이라고 판단하고 메서드들을 뒤짐
  * */
@@ -23,6 +21,8 @@ public class HelloController {
    * */
   @GetMapping("/hello")
   public String hello(String name) {
-    return helloService.sayHello(Objects.requireNonNull(name));
+    if (name == null || name.trim().length() == 0) throw new IllegalArgumentException();
+
+    return helloService.sayHello(name);
   }
 }
