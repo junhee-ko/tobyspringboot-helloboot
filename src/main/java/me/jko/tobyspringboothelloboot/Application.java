@@ -3,6 +3,7 @@ package me.jko.tobyspringboothelloboot;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -19,10 +20,17 @@ public class Application {
       protected void onRefresh() {
         super.onRefresh();
 
-        // 서블릿 컨테이너를 만들고 서블릿 초기화 작업을 스프링 컨테이너가 초기화 되는 과정 중에.
-        ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
+        ServletWebServerFactory serverFactory = this.getBean(ServletWebServerFactory.class);
+        DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
+
+        /*
+         * Spring Container 가 DispatcherServlet 은 ApplicationContext 가 필요하다고 판단해서 주입을 해줌
+         * by ApplicationContextAware setApplicationContext
+         * */
+        // dispatcherServlet.setApplicationContext(this);
+
         WebServer webServer = serverFactory.getWebServer(servletContext -> {
-          servletContext.addServlet("dispatcherServlet", new DispatcherServlet(this)).addMapping("/*");
+          servletContext.addServlet("dispatcherServlet", dispatcherServlet).addMapping("/*");
         });
 
         webServer.start();
@@ -31,5 +39,15 @@ public class Application {
 
     applicationContext.register(Application.class);
     applicationContext.refresh();
+  }
+
+  @Bean
+  public ServletWebServerFactory servletWebServerFactory() {
+    return new TomcatServletWebServerFactory();
+  }
+
+  @Bean
+  public DispatcherServlet dispatcherServlet() {
+    return new DispatcherServlet();
   }
 }
