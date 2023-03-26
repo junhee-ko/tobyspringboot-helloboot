@@ -1,5 +1,6 @@
 package me.jko.tobyspringboothelloboot;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +13,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class Application {
 
   public static void main(String[] args) {
-    MySpringApplication.run(Application.class, args);
+    SpringApplication.run(Application.class, args);
   }
 
 
