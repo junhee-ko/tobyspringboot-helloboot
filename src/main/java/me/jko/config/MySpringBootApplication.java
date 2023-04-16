@@ -1,6 +1,5 @@
-package me.jko.tobyspringboothelloboot;
+package me.jko.config;
 
-import me.jko.config.EnableMyAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import java.lang.annotation.ElementType;

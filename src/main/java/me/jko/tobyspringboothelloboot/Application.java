@@ -1,5 +1,6 @@
 package me.jko.tobyspringboothelloboot;
 
+import me.jko.config.MySpringBootApplication;
 import org.springframework.boot.SpringApplication;
 
 @MySpringBootApplication
