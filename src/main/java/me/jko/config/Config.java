@@ -1,4 +1,4 @@
-package me.jko.cnofig;
+package me.jko.config;
 
 import org.springframework.context.annotation.Configuration;
 

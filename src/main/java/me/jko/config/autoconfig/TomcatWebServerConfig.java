@@ -1,4 +1,4 @@
-package me.jko.cnofig;
+package me.jko.config.autoconfig;
 
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;

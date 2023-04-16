@@ -1,7 +1,7 @@
 package me.jko.tobyspringboothelloboot;
 
-import me.jko.cnofig.DispatcherServletConfig;
-import me.jko.cnofig.TomcatWebServerConfig;
+import me.jko.config.autoconfig.DispatcherServletConfig;
+import me.jko.config.autoconfig.TomcatWebServerConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
