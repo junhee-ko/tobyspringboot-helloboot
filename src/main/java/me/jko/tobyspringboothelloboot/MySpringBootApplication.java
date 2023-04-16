@@ -1,6 +1,7 @@
 package me.jko.tobyspringboothelloboot;
 
-import me.jko.cnofig.Config;
+import me.jko.cnofig.DispatcherServletConfig;
+import me.jko.cnofig.TomcatWebServerConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -14,6 +15,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Configuration
 @ComponentScan
-@Import(Config.class)
+@Import({DispatcherServletConfig.class, TomcatWebServerConfig.class})
 public @interface MySpringBootApplication {
 }
